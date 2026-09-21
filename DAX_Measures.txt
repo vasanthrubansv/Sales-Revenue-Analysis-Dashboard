@@ -1,0 +1,24 @@
+# Power BI DAX Measures
+
+Total Sales = SUM(Sales[Sales])
+
+Total Revenue = SUM(Sales[Revenue])
+
+Total Orders = DISTINCTCOUNT(Sales[Order ID])
+
+Units Sold = SUM(Sales[Quantity])
+
+Average Order Value = DIVIDE([Total Revenue], [Total Orders])
+
+Total Discount =
+SUMX(Sales, Sales[Sales] * Sales[Discount])
+
+Revenue Growth % =
+VAR CurrentRevenue = [Total Revenue]
+VAR PreviousRevenue =
+    CALCULATE(
+        [Total Revenue],
+        DATEADD('Calendar'[Date], -1, MONTH)
+    )
+RETURN
+    DIVIDE(CurrentRevenue - PreviousRevenue, PreviousRevenue)

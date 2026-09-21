@@ -1,0 +1,1 @@
+After building the dashboard in Power BI, export or capture the dashboard and save it here as dashboard.png.
